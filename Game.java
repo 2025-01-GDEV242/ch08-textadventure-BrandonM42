@@ -43,6 +43,9 @@ public class Game
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
         
+        outside.addItem("a",3);
+        outside.addItem("b",4);
+        
         // initialise room exits
         outside.setExit("east", theater);
         outside.setExit("south", lab);
@@ -114,6 +117,10 @@ public class Game
             case GO:
                 goRoom(command);
                 break;
+                
+            case LOOK:
+                 look();
+                 break;
 
             case QUIT:
                 wantToQuit = quit(command);
@@ -178,5 +185,13 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+    /**
+     * prints out current location when typing "look".
+     */
+    private void look()
+    {
+        System.out.println(currentRoom.getLongDescription());
     }
 }
