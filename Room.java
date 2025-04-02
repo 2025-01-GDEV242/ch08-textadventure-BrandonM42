@@ -64,7 +64,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + printAllItems() + ".\n" + getExitString();
+        return "You are " + description + ".\n" + printAllItems() + "\n" + getExitString();
     }
 
     /**
@@ -98,16 +98,20 @@ public class Room
         itemList.add(new Item(ItemDescription, ItemWeight));
     }
     
+    public void addItem()
+    {
+        itemList.add(new Item("Pencil: A standard yellow no.2 pencil", 30));
+    }
+    
     public String printAllItems()
     {
-        
-        String allItems = "The items in this room are:  ";
+        String allItems = "The items in this room are:\n";
         for(Item oneItem : itemList)
         {
-            allItems += oneItem.getDescription() + " Weight: " + oneItem.getWeight() + ", ";
+            allItems +=  oneItem.getDescription() + " Weight: " + oneItem.getWeight() + ",\n";
         }
-        
         return allItems;
+        
     }
     
     
