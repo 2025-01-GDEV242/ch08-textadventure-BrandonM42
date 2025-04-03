@@ -2,7 +2,7 @@
 /**
  * Write a description of class item here.
  *
- * @author (your name)
+ * @author Brandon Magistrado
  * @version (a version number or a date)
  */
 public class Item
@@ -20,6 +20,9 @@ public class Item
         itemDescription = "An unsharpened no.2 pencil";
     }
     
+    /**
+     * Constructor for objects of class item
+     */
     public Item(String Description, int Weight)
     {
         itemWeight = Weight;
@@ -27,16 +30,16 @@ public class Item
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @return returns the item description
      */
     public String getDescription()
     {
         return itemDescription;
     }
     
+    /**
+     * @return returns the item weight
+     */
     public int getWeight()
     {
         return itemWeight;

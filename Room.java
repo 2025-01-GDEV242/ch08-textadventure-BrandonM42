@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
+ * @author  Brandon Magistrado
  * @version 2016.02.29
  */
 
@@ -23,6 +23,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;// stores exits of this room.
     ArrayList<Item> itemList = new ArrayList<>();
+    
     
 
     /**
@@ -93,16 +94,27 @@ public class Room
         return exits.get(direction);
     }
     
+    /**
+     * adds a new item to a certain room
+     * @param ItemDescription - the items description
+     * @param ItemWeight - the items weight
+     */
     public void addItem(String ItemDescription, int ItemWeight)
     {
         itemList.add(new Item(ItemDescription, ItemWeight));
     }
     
+    /**
+     * adds a predetermined item to a room
+     */
     public void addItem()
     {
         itemList.add(new Item("Pencil: A standard yellow no.2 pencil", 30));
     }
     
+    /**
+     * prints all the items in a room
+     */
     public String printAllItems()
     {
         String allItems = "The items in this room are:\n";
@@ -113,6 +125,18 @@ public class Room
         return allItems;
         
     }
+    
+    /**
+     * returns the item list of a room
+     * @return returns an itemList
+     */
+    public ArrayList getItemList()
+    {
+        return itemList;
+    }
+    
+    
+    
     
     
 }
