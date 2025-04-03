@@ -1,6 +1,8 @@
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.ArrayList;
+
 
 /**
  * Class Room - a room in an adventure game.
@@ -12,14 +14,17 @@ import java.util.Iterator;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
+ * @author  Brandon Magistrado
  * @version 2016.02.29
  */
 
 public class Room 
 {
     private String description;
-    private HashMap<String, Room> exits;        // stores exits of this room.
+    private HashMap<String, Room> exits;// stores exits of this room.
+    ArrayList<Item> itemList = new ArrayList<>();
+    
+    
 
     /**
      * Create a room described "description". Initially, it has
@@ -60,7 +65,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        return "You are " + description + ".\n" + printAllItems() + "\n" + getExitString();
     }
 
     /**
@@ -88,5 +93,51 @@ public class Room
     {
         return exits.get(direction);
     }
+    
+    /**
+     * adds a new item to a certain room
+     * @param ItemDescription - the items description
+     * @param ItemWeight - the items weight
+     */
+    public void addItem(String ItemDescription, int ItemWeight)
+    {
+        itemList.add(new Item(ItemDescription, ItemWeight));
+    }
+    
+    /**
+     * adds a predetermined item to a room
+     */
+    public void addItem()
+    {
+        itemList.add(new Item("Pencil: A standard yellow no.2 pencil", 30));
+    }
+    
+    /**
+     * prints all the items in a room
+     */
+    public String printAllItems()
+    {
+        String allItems = "The items in this room are:\n";
+        for(Item oneItem : itemList)
+        {
+            allItems +=  oneItem.getDescription() + " Weight: " + oneItem.getWeight() + ",\n";
+        }
+        return allItems;
+        
+    }
+    
+    /**
+     * returns the item list of a room
+     * @return returns an itemList
+     */
+    public ArrayList getItemList()
+    {
+        return itemList;
+    }
+    
+    
+    
+    
+    
 }
 
